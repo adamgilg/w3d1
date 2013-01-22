@@ -240,14 +240,22 @@ describe Player do
       end.to raise_error "not nuff monies!"
     end
   end
-
+#not quite done here. 
   describe "#hand" do
-    let(:deck) do
-      double("deck", :cards => [
-          {suit: :spades, value: :queen},
-          {suit: :hearts, value: :five}
-        ])
+    let(:deck) { double("deck") }
+
+    # , :cards => [
+    #       double("card1", :suit => :spades, :value => :queen),
+    #       double("card2", :suit => :hearts, :value => :five)
+    #     ])
+    # end
+
+    let(:hand) do
+      double("hand", :deal_from => deck.cards)
     end
+
+
+    player.hand.count.should be(2)
 
 
 
